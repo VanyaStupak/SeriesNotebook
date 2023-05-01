@@ -1,0 +1,220 @@
+@startuml
+class com.example.seriesnotebook.MainActivity {
+- DrawerLayout drawerLayout
+- RecyclerView recyclerView
+- MoviesAdapter movieAdapter
+- ArrayList<Map<String,Object>> movieList
+- ArrayList<Map<String,Object>> searchResults
+- ArrayList<Map<String,Object>> watchlistMovieList
+- FirebaseAuth firebaseAuth
+- Button logOutButton
+- Spinner filterSpinner
+- Button favoritesMenuButton
+- Button mainPageMenuButton
+- Button watchlistMenuButton
+- ArrayAdapter<String> spinnerAdapter
+- String option
+- int page
+- int searchPage
+# void onCreate(Bundle)
+- void setMenuListeners()
+- void loadTVShows()
+- void loadTVShowsWithSearch(String)
++ boolean onCreateOptionsMenu(Menu)
++ void onBackPressed()
+}
+class com.example.seriesnotebook.ActivityManager {
+- FirebaseUser firebaseUser
++ void onCreate()
+}
+class com.example.seriesnotebook.RegisterActivity {
+- FirebaseAuth firebaseAuth
+- Button createAccountButton
+- EditText emailEditText
+- EditText passwordEditText
+# void onCreate(Bundle)
+}
+class com.example.seriesnotebook.JSONHelper {
+- {static} String BASE_URL
+- {static} String BASE_IMG_URL
+- {static} String TYPE_TV
+- {static} String TYPE_MOVIE
+- {static} String KEY_RESULTS
+- {static} String NAME
+- {static} String POSTER_PATH
+- {static} String STILL_PATH
+- {static} String OVERVIEW
+- {static} String POPULAR
+- {static} String TOP_RATED
+- {static} String STILL_WIDTH_92
+- {static} String STILL_WIDTH_185
+- {static} String STILL_WIDTH_300
+- {static} String POSTER_WIDTH_185
+- {static} String POSTER_WIDTH_500
+- {static} String ORIGINAL
++ {static} ArrayList<Map<String,Object>> getTVShows(int,String)
++ {static} Map<String,Object> getTVShowWithId(int)
++ {static} ArrayList<Map<String,Object>> getTVShowsBySearch(String,int)
++ {static} ArrayList<Map<String,Object>> getRecommendedTVShows(int,int)
++ {static} int getEpisodeCount(int,int)
+- {static} String getTVSeasonDetails(int,int)
+- {static} String getJSON(String)
+}
+class com.example.seriesnotebook.JSONHelper.JSONLoader {
+~ URL url
+~ HttpURLConnection httpURLConnection
+~ StringBuilder result
+# String doInBackground(String)
+}
+class com.example.seriesnotebook.WatchlistActivity {
+- ArrayList<Map<String,Object>> movieList
+- Button logOutButton
+- Button favoritesMenuButton
+- Button mainPageMenuButton
+- Button watchlistMenuButton
+- DrawerLayout drawerLayout
+- RecyclerView recyclerView
+- LinearLayout noDataLinearLayout
+- FirebaseUser firebaseUser
+- FirebaseFirestore db
+- CollectionReference watchlistReference
+# void onCreate(Bundle)
+# void onResume()
+- void setRecyclerView()
+- void loadWatchlistFromFirestore()
+- void setMenuListeners()
++ void onBackPressed()
+}
+class com.example.seriesnotebook.AuthActivity {
+- TextView signUpTextView
+- TextView wrongInfoTextView
+- Button signInButton
+- EditText emailEditText
+- EditText passwordEditText
+- FirebaseAuth firebaseAuth
+# void onCreate(Bundle)
+}
+class com.example.seriesnotebook.WatchlistAdapter {
+- Context context
+- ArrayList<Map<String,Object>> movieList
+- OnItemClickListener onItemClickListener
++ void setOnItemClickListener(OnItemClickListener)
++ WatchlistViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(WatchlistViewHolder,int)
++ int getItemCount()
+}
+interface com.example.seriesnotebook.WatchlistAdapter.OnItemClickListener {
+~ void onItemClick(int)
+}
+class com.example.seriesnotebook.WatchlistAdapter.WatchlistViewHolder {
+~ TextView movieTitleTexView
+~ TextView currentSeasonTextView
+~ TextView progressTextView
+~ ImageView movieImage
+~ ProgressBar watchlistProgressBar
+}
+class com.example.seriesnotebook.DetailedActivity {
+- Map<String,Object> movie
+- ImageView moviePosterImageView
+- TextView movieTitleTextView
+- TextView movieDescriptionTextView
+- TextView numberOfSeasonsTextView
+- TextView ratingTextView
+- Button addToFavoritesButton
+- Button addToWatchlistButton
+- TextView showDescriptionTextView
+- LinearLayout descriptionLinearLayout
+- LinearLayout progressLinearLayout
+- FirebaseUser firebaseUser
+- FirebaseFirestore db
+- CollectionReference favoritesReference
+- CollectionReference watchlistReference
+- int id
+- int numberOfSeasons
+- int episodeCount
+- Integer[] seasons
+- DrawerLayout drawerLayout
+- Button logOutButton
+- Button favoritesMenuButton
+- Button mainPageMenuButton
+- Button watchlistMenuButton
+- SeekBar episodesSeekBar
+- Button saveProgressButton
+- TextView numberOfEpisodesWatchedTextView
+- Spinner chooseSeasonProgressSpinner
+- RecyclerView recommendedRecyclerView
+- ArrayList<Map<String,Object>> recommendedMovieList
+- Double rating
+- int progressSelectedSeason
+- int page
+# void onCreate(Bundle)
+# void onStart()
+- void loadEpisodeCount(int)
+- void setMenuListeners()
++ void onBackPressed()
+}
+class com.example.seriesnotebook.MoviesAdapter {
+- ArrayList<Map<String,Object>> mMovieList
+- Context mContext
+- OnBottomReachedListener onBottomReachedListener
+- OnItemClickListener onItemClickListener
+- int orientation
++ {static} int VERTICAL
++ {static} int HORIZONTAL
++ void setOnBottomReachedListener(OnBottomReachedListener)
++ void setOnItemClickListener(OnItemClickListener)
++ MovieViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(MovieViewHolder,int)
++ int getItemCount()
+}
+interface com.example.seriesnotebook.MoviesAdapter.OnItemClickListener {
+~ void onItemClick(int)
+}
+interface com.example.seriesnotebook.MoviesAdapter.OnBottomReachedListener {
+~ void onBottomReached(int)
+}
+class com.example.seriesnotebook.MoviesAdapter.MovieViewHolder {
+~ TextView movieTitleTexView
+~ TextView movieRatingTextView
+~ ImageView movieImage
+}
+class com.example.seriesnotebook.FavoritesActivity {
+- ArrayList<Map<String,Object>> movieList
+- Button logOutButton
+- Button favoritesMenuButton
+- Button mainPageMenuButton
+- Button watchlistMenuButton
+- DrawerLayout drawerLayout
+- RecyclerView recyclerView
+- LinearLayout noDataLinearLayout
+- FirebaseUser firebaseUser
+- FirebaseFirestore db
+- CollectionReference favoritesReference
+# void onCreate(Bundle)
+# void onResume()
+- void loadFavoritesFromFirestore()
+- void setRecyclerView()
+- void setMenuListeners()
++ void onBackPressed()
+}
+
+
+androidx.appcompat.app.AppCompatActivity <|-- com.example.seriesnotebook.MainActivity
+android.app.Application <|-- com.example.seriesnotebook.ActivityManager
+androidx.appcompat.app.AppCompatActivity <|-- com.example.seriesnotebook.RegisterActivity
+com.example.seriesnotebook.JSONHelper +.. com.example.seriesnotebook.JSONHelper.JSONLoader
+com.example.seriesnotebook.AsyncTask <|-- com.example.seriesnotebook.JSONHelper.JSONLoader
+androidx.appcompat.app.AppCompatActivity <|-- com.example.seriesnotebook.WatchlistActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.seriesnotebook.AuthActivity
+com.example.seriesnotebook.Adapter <|-- com.example.seriesnotebook.WatchlistAdapter
+com.example.seriesnotebook.WatchlistAdapter +.. com.example.seriesnotebook.WatchlistAdapter.OnItemClickListener
+com.example.seriesnotebook.WatchlistAdapter +.. com.example.seriesnotebook.WatchlistAdapter.WatchlistViewHolder
+com.example.seriesnotebook.ViewHolder <|-- com.example.seriesnotebook.WatchlistAdapter.WatchlistViewHolder
+androidx.appcompat.app.AppCompatActivity <|-- com.example.seriesnotebook.DetailedActivity
+com.example.seriesnotebook.Adapter <|-- com.example.seriesnotebook.MoviesAdapter
+com.example.seriesnotebook.MoviesAdapter +.. com.example.seriesnotebook.MoviesAdapter.OnItemClickListener
+com.example.seriesnotebook.MoviesAdapter +.. com.example.seriesnotebook.MoviesAdapter.OnBottomReachedListener
+com.example.seriesnotebook.MoviesAdapter +.. com.example.seriesnotebook.MoviesAdapter.MovieViewHolder
+com.example.seriesnotebook.ViewHolder <|-- com.example.seriesnotebook.MoviesAdapter.MovieViewHolder
+androidx.appcompat.app.AppCompatActivity <|-- com.example.seriesnotebook.FavoritesActivity
+@enduml

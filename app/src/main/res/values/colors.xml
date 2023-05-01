@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2B2B2B</color>
+    <color name="colorPrimaryDark">#101010</color>
+    <color name="colorAccent">#ed4880</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#80171124</color>
+    <color name="buttonColor">#FFFFFF</color>
+    <color name="gradientEnd">#FFFFFF</color>
+    <color name="seekbar1">#ffc100</color>
+    <color name="seekbar2">#FF00AA</color>
+    <color name="seekbar3">#00d644</color>
+    <color name="black">#000000</color>
+</resources>

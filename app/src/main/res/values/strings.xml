@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SeriesNotebook</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string-array name="string_array_main_filter">
+        <item>Popular</item>
+        <item>Top Rated</item>
+    </string-array>
+</resources>
