@@ -76,6 +76,7 @@ public class FavoritesActivity extends AppCompatActivity {
         loadFavoritesFromFirestore();
     }
 
+    //Завантаження обраних серіалів з бази
     private void loadFavoritesFromFirestore(){
         movieList.clear();
         favoritesReference.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -113,9 +114,9 @@ public class FavoritesActivity extends AppCompatActivity {
         });
     }
 
-    //Слушатели кнопок выпадающего меню
+    //Слушачі кнопок выпадаючого меню
     private void setMenuListeners(){
-        //Кнопка выхода из аккаунта
+        //Кнопка виходу з акаунта
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,14 +126,14 @@ public class FavoritesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //Кнопка обраних
         favoritesMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
-
+        //Кнопка головного меню
         mainPageMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,7 +142,7 @@ public class FavoritesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //Кнопка вотчлиста
         watchlistMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

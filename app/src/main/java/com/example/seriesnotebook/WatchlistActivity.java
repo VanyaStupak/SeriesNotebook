@@ -89,7 +89,7 @@ public class WatchlistActivity extends AppCompatActivity {
             }
         });
     }
-
+    //Завантаження вотчлиста з бази
     private void loadWatchlistFromFirestore(){
         movieList.clear();
         watchlistReference.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -106,9 +106,9 @@ public class WatchlistActivity extends AppCompatActivity {
         });
     }
 
-    //Слушатели кнопок выпадающего меню
+    //Слухачі кнопок випадаючого меню
     private void setMenuListeners(){
-        //Кнопка выхода из аккаунта
+        //Кнопка виходу з акаунта
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

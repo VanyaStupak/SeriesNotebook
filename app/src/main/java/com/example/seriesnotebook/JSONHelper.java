@@ -38,6 +38,7 @@ public class JSONHelper {
     private static final String ORIGINAL = "original";
 
 
+    //Серіали на головному меню
     public static ArrayList<Map<String, Object>> getTVShows(int page, String option){
         ArrayList<Map<String, Object>> tvShowList = new ArrayList<>();
         String url = String.format("https://api.themoviedb.org/3/%s/%s?api_key=45b65d61b990414499da78ba05f16d4e&language=en-US&page=%d", TYPE_TV, option, page);
@@ -60,7 +61,7 @@ public class JSONHelper {
 
         return tvShowList;
     }
-
+    //Серіали за id
     public static Map<String, Object> getTVShowWithId(int id){
         String url = String.format("https://api.themoviedb.org/3/tv/%d?api_key=45b65d61b990414499da78ba05f16d4e&language=en-US", id);
         Map<String, Object> tvShow = new HashMap<>();
@@ -83,7 +84,7 @@ public class JSONHelper {
         return tvShow;
     }
 
-
+    //Серіали за пошуком
     public static ArrayList<Map<String, Object>> getTVShowsBySearch(String query, int page){
         String url = String.format("https://api.themoviedb.org/3/search/tv?api_key=45b65d61b990414499da78ba05f16d4e&language=en-US&page=%d&query=%s&include_adult=false", page, query);
         ArrayList<Map<String, Object>> tvShows = new ArrayList<>();
@@ -108,7 +109,7 @@ public class JSONHelper {
 
         return tvShows;
     }
-
+    //Рекомендовані Серіали
     public static ArrayList<Map<String, Object>> getRecommendedTVShows(int id, int page){
         String url = String.format("https://api.themoviedb.org/3/tv/%d/recommendations?api_key=45b65d61b990414499da78ba05f16d4e&language=en-US&page=%d", id, page);
         ArrayList<Map<String, Object>> tvShows = new ArrayList<>();
@@ -129,7 +130,7 @@ public class JSONHelper {
 
         return tvShows;
     }
-
+    //Кількість епізодів серіалу
     public static int getEpisodeCount(int id, int seasonNumber){
         int episodeCount=1;
         try {
@@ -141,13 +142,13 @@ public class JSONHelper {
         }
         return episodeCount;
     }
-
+    //Опис серіалу
     private static String getTVSeasonDetails(int id, int seasonNumber){
         String url = String.format("https://api.themoviedb.org/3/tv/%d/season/%d?api_key=45b65d61b990414499da78ba05f16d4e&language=en-US", id, seasonNumber);
 
         return getJSON(url);
     }
-
+    //Перевірка
     private static String getJSON(String url){
         try {
             return new JSONLoader().execute(url).get();
@@ -159,7 +160,7 @@ public class JSONHelper {
 
         return null;
     }
-
+    //JSONLoader
     private static class JSONLoader extends AsyncTask<String, Void, String> {
         URL url = null;
         HttpURLConnection httpURLConnection = null;

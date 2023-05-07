@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+         //Кнопка обраних
         favoritesMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,14 +124,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //Кнопка головного меню
         mainPageMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
-
+        //Кнопка вотчилста
         watchlistMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    //завантаження серіалів у головне меню
     private void loadTVShows(){
         movieList = JSONHelper.getTVShows(page, option);
         movieAdapter = new MoviesAdapter(MainActivity.this, movieList, MoviesAdapter.VERTICAL);
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    //пошук серіалів
     private void loadTVShowsWithSearch(final String query){
         searchResults = JSONHelper.getTVShowsBySearch(query, searchPage);
         MoviesAdapter searchAdapter = new MoviesAdapter(MainActivity.this, searchResults, MoviesAdapter.VERTICAL);

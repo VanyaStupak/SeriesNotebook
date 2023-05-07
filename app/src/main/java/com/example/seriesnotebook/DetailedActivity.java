@@ -251,7 +251,7 @@ public class DetailedActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        //Кнопка додавання/видалення сериалу з обраних
+        //Кнопка додавання/видалення серіалу з обраних
         favoritesReference.document(String.valueOf(id)).addSnapshotListener(DetailedActivity.this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -277,7 +277,7 @@ public class DetailedActivity extends AppCompatActivity {
             }
         });
 
-        //Кнопка добавления/удаления сериала из вотчлиста
+        //Кнопка додавання/видалення серіалу з вотчлиста
         watchlistReference.document(String.valueOf(id)).addSnapshotListener(DetailedActivity.this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -328,14 +328,14 @@ public class DetailedActivity extends AppCompatActivity {
         });
     }
 
-
+    //Кількість епізодів в сезоні
     private void loadEpisodeCount(int seasonNumber) {
         episodeCount = JSONHelper.getEpisodeCount(id, seasonNumber);
     }
 
-    //Слушатели кнопок выпадающего меню
+    //Слухачі кнопок выпадаючого меню
     private void setMenuListeners() {
-        //Кнопка выхода из аккаунта
+        //Кнопка виходу з акаунта
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -345,7 +345,7 @@ public class DetailedActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+       //Кнопка обраних
         favoritesMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -354,7 +354,7 @@ public class DetailedActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+         //Кнопка випадаючого меню
         mainPageMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -363,7 +363,7 @@ public class DetailedActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //Кнопка вотчлиста
         watchlistMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

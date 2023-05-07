@@ -30,11 +30,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         mContext = context;
         this.orientation = orientation;
     }
-
+    //слухач прокрутки вниз
     public void setOnBottomReachedListener(OnBottomReachedListener onBottomReachedListener) {
         this.onBottomReachedListener = onBottomReachedListener;
     }
-
     public void setOnItemClickListener(OnItemClickListener itemClickListener){
         onItemClickListener = itemClickListener;
     }

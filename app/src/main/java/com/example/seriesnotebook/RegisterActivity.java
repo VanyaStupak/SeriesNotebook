@@ -34,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.edit_text_register_email);
         passwordEditText = findViewById(R.id.edit_text_register_password);
         emailEditText.getText();
+        //Кнопка створення акаунта
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
