@@ -148,7 +148,7 @@ public class JSONHelper {
 
         return getJSON(url);
     }
-    //Перевірка
+    //Отримання JSON
     private static String getJSON(String url){
         try {
             return new JSONLoader().execute(url).get();

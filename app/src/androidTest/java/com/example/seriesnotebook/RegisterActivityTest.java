@@ -45,7 +45,7 @@ public class RegisterActivityTest {
     public void CheckMainAfterRegister() throws Throwable {
         rule.getScenario();
         onView(withId(R.id.edit_text_register_email))
-                .perform(click(), typeText("stupakivan@gmail.com"), closeSoftKeyboard());
+                .perform(click(), typeText("stupakivann@gmail.com"), closeSoftKeyboard());
         onView(withId(R.id.edit_text_register_password)).perform(click(), typeText("12345678"), closeSoftKeyboard());
         onView(withId(R.id.button_create_account)).perform(click());
 
